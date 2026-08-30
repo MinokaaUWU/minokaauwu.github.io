@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-flex;
+    width: max-content;
+    animation: scroll 15s linear infinite;
+}
+
+.marquee-item {
+    padding-right: 50px;
+    font-size: 18px;
+    white-space: pre;
+    font-family: "Titan One", "Arial Black", Arial, sans-serif;
+    font-weight: 400;
+    background: linear-gradient(to bottom, #ffe4ec 0%, #ffb6c1 50%, #d17d93 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #444) drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
