@@ -19,6 +19,9 @@
 }
 
 .modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     background-color: #1f1015;
     transform: scale(0.5);

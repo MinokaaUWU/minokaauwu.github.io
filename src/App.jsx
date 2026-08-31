@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import teto from "./assets/teto-baner.jpg"
 import avatar from './assets/avatar.jpg'
 import './App.css'
-import PixelBlast from './assets/components/background'
-import { Marquee } from './assets/components/Marquee'
-import { Modal } from './assets/components/Modal/Modal'
+import PixelBlast from './components/background'
+import { Marquee } from './components/Marquee'
+import { Modal } from './components/Modal/Modal'
 
 function App() {
 
@@ -15,6 +12,8 @@ function App() {
 
   const [modalDiscordActive, setModalDiscordActive] = useState(false);
   const [modalDonateActive, setModalDonateActive] = useState(false);
+  const [modalQualityActive, setModalQualityActive] = useState(true);
+  const [quality, setQuality] = useState(false);
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -25,9 +24,14 @@ function App() {
     return array;
   }
 
+  function onClickBtnQuality() {
+    setQuality(!quality);
+  } 
+
   return (
       <div className="page">
-        <PixelBlast
+        {quality ? <PixelBlast
+          style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh' }}
           variant="square"
           pixelSize={2}
           color="#edb0cd"
@@ -45,7 +49,7 @@ function App() {
           speed={0.95}
           edgeFade={0.16}
           transparent
-        >
+        /> : null}
           <div className="layout">
             <div className="content">
               <div className="baner">
@@ -94,15 +98,8 @@ function App() {
                 ></iframe>
               </div>
             </div>
-            <Modal active={modalDonateActive} setActive={setModalDonateActive}>
-              <p>USDT TRC20: TEBEBkeKp3k6eMkHurFvn2s1j9MCYxBpvb</p>
-            </Modal>
-            <Modal active={modalDiscordActive} setActive={setModalDiscordActive}>
-              <p>my discord id: minokaa</p>
-            </Modal>
+            
           </div>
-        </PixelBlast>
-
         <img
           className="corner-gif corner-gif-left"
           src="https://static2.klipy.com/ii/935d7ab9d8c6202580a668421940ec81/f3/c7/9nhTBouV.gif"
@@ -113,6 +110,16 @@ function App() {
           src="https://media1.tenor.com/m/ISUJN_6fPqIAAAAd/kasane-teto-hatsune-miku.gif"
           alt="teto"
         />
+        <Modal active={modalQualityActive} setActive={setModalQualityActive}>
+          <p>Enable at your own risk, may cause lag on weaker devices.</p>
+          <button onClick={onClickBtnQuality}>{quality ? "disable fancy background" : "enable fancy background"}</button>
+        </Modal>
+        <Modal active={modalDonateActive} setActive={setModalDonateActive}>
+          <p>USDT TRC20: TEBEBkeKp3k6eMkHurFvn2s1j9MCYxBpvb</p>
+        </Modal>
+        <Modal active={modalDiscordActive} setActive={setModalDiscordActive}>
+          <p>my discord id: minokaa</p>
+        </Modal>
       </div>
   )
 }
