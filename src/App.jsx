@@ -5,15 +5,18 @@ import './App.css'
 import PixelBlast from './components/background'
 import { Marquee } from './components/Marquee'
 import { Modal } from './components/Modal/Modal'
+import { Notification } from './components/Notification/Notification'
 
 function App() {
 
+  const DISCORD_ID = 'minokaa';
+  
   const arrMarquee = ['uwu', 'i love teto <3', '44$btc', 'no money 😂', 'minecraft <3', 'roblox <3', 'space-station 14 </3'];
 
-  const [modalDiscordActive, setModalDiscordActive] = useState(false);
   const [modalDonateActive, setModalDonateActive] = useState(false);
   const [modalQualityActive, setModalQualityActive] = useState(true);
   const [quality, setQuality] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -27,6 +30,15 @@ function App() {
   function onClickBtnQuality() {
     setQuality(!quality);
   } 
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(DISCORD_ID)
+      setCopied(true);
+    } catch (err) {
+      console.error('Error copy: ', err);
+    };
+  };
 
   return (
       <div className="page">
@@ -63,7 +75,8 @@ function App() {
               <nav>
                 <ul>
                   <li><a href="https://github.com/MinokaaUWU">github</a></li>
-                  <li><a onClick={() => setModalDiscordActive(true)}>discord</a></li>
+                  <li><a href="https://t.me/+r3D4liomcbEyZTli">telegram</a></li>
+                  <li><a onClick={() => handleCopy()}>discord</a></li>
                   <li><a onClick={() => setModalDonateActive(true)}>donate</a></li>
                 </ul>
               </nav>
@@ -117,9 +130,9 @@ function App() {
         <Modal active={modalDonateActive} setActive={setModalDonateActive}>
           <p>USDT TRC20: TEBEBkeKp3k6eMkHurFvn2s1j9MCYxBpvb</p>
         </Modal>
-        <Modal active={modalDiscordActive} setActive={setModalDiscordActive}>
-          <p>my discord id: minokaa</p>
-        </Modal>
+        <Notification active={copied} setActive={setCopied} duration={2000}>
+          <p>discord id copied!</p>
+        </Notification>
       </div>
   )
 }
