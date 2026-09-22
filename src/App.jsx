@@ -78,6 +78,7 @@ function App() {
                   <li><a href="https://t.me/+r3D4liomcbEyZTli">telegram</a></li>
                   <li><a onClick={() => handleCopy()}>discord</a></li>
                   <li><a onClick={() => setModalDonateActive(true)}>donate</a></li>
+                  <li><a href="https://x.com/Minokaa_UWU">xwitter</a></li>
                 </ul>
               </nav>
             </div>
