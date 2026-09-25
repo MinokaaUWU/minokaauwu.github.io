@@ -6,6 +6,7 @@ import PixelBlast from './components/background'
 import { Marquee } from './components/Marquee'
 import { Modal } from './components/Modal/Modal'
 import { Notification } from './components/Notification/Notification'
+import { CursorTrail } from './components/CursorTrail/CursorTrail'
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
 
   return (
       <div className="page">
+        <CursorTrail />
         {quality ? <PixelBlast
           style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh' }}
           variant="square"
