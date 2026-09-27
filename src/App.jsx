@@ -131,9 +131,9 @@ function App() {
           <button onClick={onClickBtnQuality}>{quality ? "disable fancy background" : "enable fancy background"}</button>
         </Modal>
         <Modal active={modalDonateActive} setActive={setModalDonateActive}>
-          <p>USDT TRC20: TEBEBkeKp3k6eMkHurFvn2s1j9MCYxBpvb</p>
-          <p>USDT ETH: 0x9e15A594fB7d6c4312a5c19fC082bDeC4801F1D4</p>
-          <p>LTC: ltc1q6kl4l2nm7nxvxnnqq8dnx5xjzszawxfhkglxzl</p>
+          <p className="donate-address">USDT TRC20: TEBEBkeKp3k6eMkHurFvn2s1j9MCYxBpvb</p>
+          <p className="donate-address">USDT ETH: 0x9e15A594fB7d6c4312a5c19fC082bDeC4801F1D4</p>
+          <p className="donate-address">LTC: ltc1q6kl4l2nm7nxvxnnqq8dnx5xjzszawxfhkglxzl</p>
         </Modal>
         <Notification active={copied} setActive={setCopied} duration={2000}>
           <p>discord id copied!</p>
